@@ -6,7 +6,7 @@ class Solution(object):
         for j in range(len(nums)): 
           #this will check if the current element is less than the prev elements
             if nums[j] != nums[i]: 
-                i += 1  #Moving to next
+                i += 1  #Moving to next -- and keep index of only unique inserted elements
                 nums[i] = nums[j]  #Updating list with unique elments
 
         return i + 1  # Return unique element length

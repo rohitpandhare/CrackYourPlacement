@@ -14,11 +14,11 @@ class Solution(object):
                 top_element = stack.pop() if stack else '#' #storing the top of stack
                 
                 # Check if the popped bracket with char map's value part ( key - end brack & val - opening part)
-                if bracket_map[char] != top_element:
+                if bracket_map[element] != top_element:
                     return False  # Return False if mismatch
             else:
                 # If it's an opening bracket then push into stack
-                stack.append(char)
+                stack.append(element)
         
         # at the end the stack will become empty
         return not stack  # Return True if the stack is empty -- stack -empty- false--> not stack -- true !!

@@ -20,3 +20,10 @@ class Solution(object):
         
         # else
         return -1
+'''
+# By using inbuilt functions --
+if needle not in haystack:
+            return-1
+        else:
+            return haystack.find(needle)
+'''

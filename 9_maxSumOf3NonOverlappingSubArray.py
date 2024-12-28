@@ -1,5 +1,53 @@
 #hard - need to loop for better approach
+'''
+# optimal
+class Solution(object):
+    def maxSumOfThreeSubarrays(self, nums, k):
+        # Get the length of the input array
+        n = len(nums)
+        
+        # Calculate the initial sums of the first three subarrays of length k
+        sum1 = sum(nums[:k])          # Sum of the first subarray
+        sum2 = sum(nums[k:2 * k])       # Sum of the second subarray
+        sum3 = sum(nums[2*k:3 * k])     # Sum of the third subarray
 
+        # Initialize maximum sums for the first, first two, and all three subarrays
+        max1 = sum1                   # Maximum sum of the first subarray
+        max12 = sum1 + sum2           # Maximum sum of the first two subarrays
+        max123 = sum1 + sum2 + sum3   # Maximum sum of all three subarrays
+
+        # Initialize indices to track the starting points of the subarrays
+        index1 = 0                     # Starting index of the first subarray
+        index12_1 = 0                  # Starting index of the first subarray in the first two
+        index12_2 = k                  # Ending index of the second subarray in the first two
+        ans = [0, k, 2 * k]            # To store the best indices of the three subarrays
+
+        # Iterate through the array to find the best subarrays
+        for i in range(1, n - 3 * k + 1):
+            # Update the sums of the three subarrays using the sliding window technique
+            sum1 = sum1 - nums[i - 1] + nums[i + k - 1]  # Update sum1 for the new window
+            sum2 = sum2 - nums[i + k - 1] + nums[i + 2 * k - 1]  # Update sum2 for the new window
+            sum3 = sum3 - nums[i + 2 * k - 1] + nums[i + 3 * k - 1]  # Update sum3 for the new window
+
+            # Update the maximum sum for the first subarray if a new maximum is found
+            if sum1 > max1:
+                max1 = sum1
+                index1 = i  # Update the starting index of the first subarray
+
+            # Update the maximum sum for the first two subarrays if a new maximum is found
+            if max1 + sum2 > max12:
+                max12 = max1 + sum2
+                index12_1 = index1  # Update the starting index of the first subarray in the first two
+                index12_2 = i + k   # Update the ending index of the second subarray
+
+            # Update the maximum sum for all three subarrays if a new maximum is found
+            if max12 + sum3 > max123:
+                max123 = max12 + sum3
+                ans = [index12_1, index12_2, i + 2 * k]  # Update the best indices
+
+        return ans  # Return the indices of the three subarrays with the maximum sum
+        
+'''
 class Solution(object):
     def maxSumOfThreeSubarrays(self, nums, k):
         # Initialize the array to store the sum of each window of size `k`.

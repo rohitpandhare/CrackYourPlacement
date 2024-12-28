@@ -1,5 +1,3 @@
-"""
-#Normal Approach
 class Solution(object):
     def validPalindrome(self, s):
     #convert the string into list
@@ -26,4 +24,4 @@ class Solution(object):
                     return False
                   #simply break the loop
                 break
-  """
+  

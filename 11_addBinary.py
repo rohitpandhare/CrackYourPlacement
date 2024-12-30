@@ -9,7 +9,7 @@ class Solution(object):
         """
         # Initialize carry to handle overflow during addition
         carry = 0
-        # Initialize an empty string to accumulate the result
+        # Initialize an empty string for result
         result = ''
 
         # Convert the input strings to lists for easy manipulation (e.g., popping elements)

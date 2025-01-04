@@ -1,6 +1,6 @@
 class Solution(object):
     def countPalindromicSubsequence(self, s):
-        '''
+        ''' Non optimal soln -- with O(n^3) time complexity
         r = len(s)
         palindrome = set()
 
@@ -13,8 +13,8 @@ class Solution(object):
         #optimal approach
 
         #created 2 dictionaries to store first and last occurance
-        first = {}
-        last = {}
+        first = {} #to store only unique alphabet
+        last = {} #to store these alphabets with thier count
 
         for i,char in enumerate(s): #loop to acces the INdex and Char at index
             if char not in first: #if char is not present in first 
